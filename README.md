@@ -14,7 +14,9 @@ Don't need to control the output or are looking for something simpler? Check out
 
 ## Requirements
 
-* `curl`
+This repo contains two tiny bash scripts in the `scripts/` directory (one to download avatars, the other to create the mosaic). To run them, you'll need:
+
+* `curl`, and 
 * `imagemagick`
 
 Note: You can install both on MacOS with `brew bundle`
