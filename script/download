@@ -1,0 +1,12 @@
+#!/bin/bash
+# Downloads GitHub avatars from the handles listed in handles.txt
+# Saves the resulting avatars to avatars/*.png
+
+HANDLES=$(cat handles.txt)
+
+rm -Rf "./avatars/*.png"
+
+for HANDLE in $HANDLES; do
+  echo "Downloading avatar for $HANDLE"
+  curl -L -o "./avatars/$HANDLE.png" "https://github.com/$HANDLE.png"
+done
