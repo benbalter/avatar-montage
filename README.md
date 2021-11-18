@@ -1,20 +1,21 @@
 # Avatar Montage
 
-*Create a tiled montage of GitHub Avatar images for use in all hands and other "welcome" or "thank you" slides*
+*Create a tiled montage (or collage) of GitHub Avatar images for use in all hands and other "welcome" or "thank you" slides*
 
-Don't need to control the output or are looking for something simpler? Check out @jhutchings1's hosted [Thank you builder](https://github.com/jhutchings1/thank-you-builder).
+This repo contains two tiny bash scripts in the `scripts/` directory. One to download avatars via `curl`, the other to create the montage via ImageMagick's `montage` command. 
 
+*Don't need to control the output or are looking for something simpler? Check out @jhutchings1's hosted [Thank you builder](https://github.com/jhutchings1/thank-you-builder).*
 ## Usage
 
-1. Clone this repo locally
-2. Add a list of GitHub handles (with the `@`) to `handles.txt`, one handle per line
+1. Clone this repo locally and `cd` into the directory
+2. Add a list of GitHub handles (without the `@`) to a `handles.txt` file, one handle per line
 3. Run `script/download` to fetch the avatars
 4. Run`script/create` to create the montage
 5. Use the resulting `montage.png` file in your presentation
 
 ## Requirements
 
-This repo contains two tiny bash scripts in the `scripts/` directory (one to download avatars, the other to create the mosaic). To run them, you'll need:
+To run the scripts, you'll need:
 
 * `curl`, and 
 * `imagemagick`
@@ -23,7 +24,7 @@ Note: You can install both on MacOS with `brew bundle`
 
 ## Customizing the output
 
-You can customize the output by passing additional arguments to `script/create`, e.g., `script/create tile 10x` to force the montage to be 10 images wide. See [the ImageMagick montage documentation](http://www.imagemagick.org/Usage/montage/) for a list of available options.
+You can customize the output by passing additional arguments to `script/create`, e.g., `script/create -tile 10x` to force the montage to be 10 images wide. See [the ImageMagick montage documentation](http://www.imagemagick.org/Usage/montage/) for a list of available options.
 
 ## Credit
 
