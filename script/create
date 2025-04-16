@@ -3,4 +3,3 @@
 # Usage: script/create [optional additional montage options to customize]
 
 montage avatars/*.png -background black "$@" montage.png 
-open montage.png
