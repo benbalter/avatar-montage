@@ -1,0 +1,42 @@
+name: Run Avatar Montage
+
+on:
+  workflow_dispatch:
+    inputs:
+      handles:
+        description: "Comma-separated list of GitHub handles"
+        required: true
+        default: "octocat,github"
+      imagemagick_args:
+        description: "Additional arguments for ImageMagick montage command"
+        required: false
+        default: ""
+
+jobs:
+  run-montage:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y curl imagemagick
+
+    - name: Add GitHub handles
+      run: |
+        echo "${{ inputs.handles }}" | tr ',' '\n' > handles.txt
+
+    - name: Download avatars
+      run: script/download
+
+    - name: Create montage
+      run: script/create ${{ inputs.imagemagick_args }}
+
+    - name: Upload montage artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: montage
+        path: montage.png

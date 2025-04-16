@@ -30,6 +30,21 @@ Note: You can install both on MacOS with `brew bundle`
 
 You can customize the output by passing additional arguments to `script/create`, e.g., `script/create -tile 10x` to force the montage to be 10 images wide. See [the ImageMagick montage documentation](http://www.imagemagick.org/Usage/montage/) for a list of available options.
 
+## Using GitHub Actions
+
+You can also run the script using the provided GitHub Action workflow. This is useful for automating the process or running it without setting up the environment locally.
+
+### Steps to Run
+
+1. Navigate to the "Actions" tab in your GitHub repository.
+2. Select the "Run Avatar Montage" workflow.
+3. Click on "Run workflow" and provide the following inputs:
+   - **handles**: A comma-separated list of GitHub handles (e.g., `octocat,github`).
+   - **imagemagick_args** (optional): Additional arguments for the ImageMagick montage command (e.g., `-tile 10x`).
+4. Click "Run workflow" to execute the script.
+
+The workflow will generate a `montage.png` file and upload it as an artifact, which you can download from the workflow run page.
+
 ## Credit
 
 Credit goes to @martinwoodward for his "very quick ruby script to create a bash script that will create a montage" for the idea, and for pointing me towards the ImageMagick `montage` command.
