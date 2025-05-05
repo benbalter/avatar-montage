@@ -3,6 +3,8 @@
 # Saves the resulting avatars to avatars/*.png
 
 HANDLES=$(cat handles.txt)
+rachel-sinclair
+lindseygowin
 
 rm -Rf "./avatars/*.png"
 
