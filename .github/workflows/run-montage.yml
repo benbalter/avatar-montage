@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Check out the repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v7
 
     - name: Install dependencies
       run: |
@@ -36,7 +36,7 @@ jobs:
       run: script/create ${{ inputs.imagemagick_args }}
 
     - name: Upload montage artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: montage
         path: montage.png
