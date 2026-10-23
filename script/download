@@ -4,9 +4,17 @@
 
 HANDLES=$(cat handles.txt)
 
-rm -Rf "./avatars/*.png"
+rm -f ./avatars/*.png
 
+FAILED=()
 for HANDLE in $HANDLES; do
   echo "Downloading avatar for $HANDLE"
-  curl -L -o "./avatars/$HANDLE.png" "https://github.com/$HANDLE.png"
+  if ! curl -fL -o "./avatars/$HANDLE.png" "https://github.com/$HANDLE.png"; then
+    rm -f "./avatars/$HANDLE.png"
+    FAILED+=("$HANDLE")
+  fi
 done
+
+if [ ${#FAILED[@]} -gt 0 ]; then
+  echo "Couldn't download avatars for: ${FAILED[*]}" >&2
+fi
